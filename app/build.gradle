@@ -1,15 +1,14 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.github.ben-manes.versions'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.0"
+    compileSdkVersion versions.compileSdk
 
     defaultConfig {
         applicationId "com.vnedomovnyi.runlooptest"
-        minSdkVersion 19
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionName versions.name
     }
 
     buildTypes {
@@ -17,13 +16,42 @@ android {
 
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation libraries.androidXAnnotation
+    implementation libraries.androidXAppCompat
+    implementation libraries.androidXRecyclerView
+
+    implementation libraries.moxy
+    annotationProcessor libraries.moxyCompiler
+
+    implementation libraries.dagger
+    annotationProcessor libraries.daggerProcessor
+
+    implementation libraries.daggerAndroid
+    annotationProcessor libraries.daggerAndroidCompiler
+    implementation libraries.daggerAndroidSupport
+
+    implementation libraries.okHttp
+
+    implementation libraries.retrofit
+    implementation libraries.retrofitConverter
+
+    compileOnly libraries.lombok
+    annotationProcessor libraries.lombokAnnotations
+
+    implementation libraries.timber
+
+    implementation libraries.butterKnife
+    annotationProcessor libraries.butterKnifeCompiler
+
+    implementation libraries.threetenabp
 }
