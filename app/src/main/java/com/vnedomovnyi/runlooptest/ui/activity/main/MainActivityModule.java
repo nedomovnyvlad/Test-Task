@@ -1,8 +1,18 @@
 package com.vnedomovnyi.runlooptest.ui.activity.main;
 
+import com.vnedomovnyi.runlooptest.ui.screen.general.GeneralFragment;
+import com.vnedomovnyi.runlooptest.ui.screen.news.NewsFragment;
+
 import dagger.Module;
+import dagger.android.ContributesAndroidInjector;
 
 @Module
-public class MainActivityModule {
+public interface MainActivityModule {
+
+    @ContributesAndroidInjector
+    GeneralFragment generalFragment();
+
+    @ContributesAndroidInjector
+    NewsFragment newsFragment();
 
 }
