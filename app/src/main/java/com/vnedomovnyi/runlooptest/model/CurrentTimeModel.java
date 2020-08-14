@@ -33,10 +33,8 @@ public class CurrentTimeModel {
     }
 
     private void scheduleTask() {
-        LocalDateTime nowTime = LocalDateTime.now();
-
         long delayMilli = Duration.between(
-                nowTime,
+                LocalDateTime.now(),
                 getNowTimeTruncatedToSeconds().plusSeconds(SECONDS_INTERVAL)
         )
                 .toMillis();
