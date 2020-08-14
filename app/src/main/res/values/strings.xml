@@ -5,4 +5,6 @@
     <string name="general_name">Vlad Nedomovnyi</string>
 
     <string name="news_title">News</string>
+    <string name="lifestyle_news_title">Lifestyle</string>
+    <string name="other_news_title">Other</string>
 </resources>
