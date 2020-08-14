@@ -4,11 +4,20 @@ import android.app.Application;
 
 import com.vnedomovnyi.runlooptest.RunloopTestApp;
 import com.vnedomovnyi.runlooptest.di.module.ApplicationModule;
+import com.vnedomovnyi.runlooptest.di.module.ExecutorModule;
+import com.vnedomovnyi.runlooptest.di.module.ModelModule;
+
+import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
 
-@Component(modules = ApplicationModule.class)
+@Singleton
+@Component(modules = {
+        ApplicationModule.class,
+        ExecutorModule.class,
+        ModelModule.class
+})
 public interface AppComponent {
 
     @Component.Builder

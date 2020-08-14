@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Runloop Test</string>
+
     <string name="general_title">General</string>
+    <string name="general_name">Vlad Nedomovnyi</string>
+
     <string name="news_title">News</string>
 </resources>
