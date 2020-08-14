@@ -33,6 +33,7 @@ dependencies {
 
     implementation libraries.moxy
     annotationProcessor libraries.moxyCompiler
+    implementation libraries.moxyAndroidX
 
     implementation libraries.dagger
     annotationProcessor libraries.daggerProcessor

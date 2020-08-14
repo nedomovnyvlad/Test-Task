@@ -13,7 +13,6 @@ ext.versions = [
         material            : '1.2.0',
 
         moxy                : '1.7.0',
-        moxyCompiler        : '1.5.5',
         dagger              : '2.28.3',
         okHttp              : '4.8.1',
         retrofit            : '2.9.0',
@@ -34,8 +33,9 @@ ext.libraries = [
         androidXRecyclerView    : "androidx.recyclerview:recyclerview:$versions.androidXRecyclerView",
         material                : "com.google.android.material:material:$versions.material",
 
-        moxy                    : "tech.schoolhelper:moxy-x-androidx:$versions.moxy",
-        moxyCompiler            : "com.arello-mobile:moxy-compiler:$versions.moxyCompiler",
+        moxy                    : "tech.schoolhelper:moxy-x:$versions.moxy",
+        moxyCompiler            : "tech.schoolhelper:moxy-x-compiler:$versions.moxy",
+        moxyAndroidX            : "tech.schoolhelper:moxy-x-androidx:$versions.moxy",
 
         dagger                  : "com.google.dagger:dagger:$versions.dagger",
         daggerProcessor         : "com.google.dagger:dagger-compiler:$versions.dagger",
