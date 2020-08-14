@@ -10,6 +10,7 @@ ext.versions = [
         androidXAnnotation  : '1.1.0',
         androidXAppCompat   : '1.2.0',
         androidXRecyclerView: '1.1.0',
+        material            : '1.2.0',
 
         moxy                : '1.7.0',
         moxyCompiler        : '1.5.5',
@@ -31,6 +32,7 @@ ext.libraries = [
         androidXAnnotation      : "androidx.annotation:annotation:$versions.androidXAnnotation",
         androidXAppCompat       : "androidx.appcompat:appcompat:$versions.androidXAppCompat",
         androidXRecyclerView    : "androidx.recyclerview:recyclerview:$versions.androidXRecyclerView",
+        material                : "com.google.android.material:material:$versions.material",
 
         moxy                    : "tech.schoolhelper:moxy-x-androidx:$versions.moxy",
         moxyCompiler            : "com.arello-mobile:moxy-compiler:$versions.moxyCompiler",

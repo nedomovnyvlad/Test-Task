@@ -29,6 +29,7 @@ dependencies {
     implementation libraries.androidXAnnotation
     implementation libraries.androidXAppCompat
     implementation libraries.androidXRecyclerView
+    implementation libraries.material
 
     implementation libraries.moxy
     annotationProcessor libraries.moxyCompiler
