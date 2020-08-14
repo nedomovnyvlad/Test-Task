@@ -2,6 +2,7 @@ package com.vnedomovnyi.runlooptest;
 
 import android.app.Application;
 
+import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.vnedomovnyi.runlooptest.di.DaggerAppComponent;
 
 import javax.inject.Inject;
@@ -21,6 +22,7 @@ public class RunloopTestApp extends Application implements HasAndroidInjector {
         super.onCreate();
 
         initDagger();
+        AndroidThreeTen.init(this);
 
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
