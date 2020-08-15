@@ -6,6 +6,8 @@ import com.vnedomovnyi.runlooptest.RunloopTestApp;
 import com.vnedomovnyi.runlooptest.di.module.ApplicationModule;
 import com.vnedomovnyi.runlooptest.di.module.ExecutorModule;
 import com.vnedomovnyi.runlooptest.di.module.ModelModule;
+import com.vnedomovnyi.runlooptest.di.module.NetworkModule;
+import com.vnedomovnyi.runlooptest.di.module.RetrofitModule;
 
 import javax.inject.Singleton;
 
@@ -16,7 +18,9 @@ import dagger.Component;
 @Component(modules = {
         ApplicationModule.class,
         ExecutorModule.class,
-        ModelModule.class
+        ModelModule.class,
+        NetworkModule.class,
+        RetrofitModule.class
 })
 public interface AppComponent {
 

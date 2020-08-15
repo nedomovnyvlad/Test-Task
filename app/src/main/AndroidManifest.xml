@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.vnedomovnyi.runlooptest">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".RunloopTestApp"
         android:allowBackup="true"

@@ -4,6 +4,7 @@ import com.vnedomovnyi.runlooptest.ui.screen.general.GeneralFragment;
 import com.vnedomovnyi.runlooptest.ui.screen.general.GeneralModule;
 import com.vnedomovnyi.runlooptest.ui.screen.news.NewsFragment;
 import com.vnedomovnyi.runlooptest.ui.screen.news.lifestyle_news.LifestyleNewsFragment;
+import com.vnedomovnyi.runlooptest.ui.screen.news.lifestyle_news.LifestyleNewsModule;
 import com.vnedomovnyi.runlooptest.ui.screen.news.other_news.OtherNewsFragment;
 
 import dagger.Module;
@@ -18,7 +19,7 @@ public interface MainActivityModule {
     @ContributesAndroidInjector
     NewsFragment newsFragment();
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = LifestyleNewsModule.class)
     LifestyleNewsFragment lifestyleNewsFragment();
 
     @ContributesAndroidInjector
