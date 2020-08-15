@@ -6,7 +6,7 @@ import com.vnedomovnyi.runlooptest.model.UpdatableModel;
 import com.vnedomovnyi.runlooptest.model.UpdateDataModel;
 import com.vnedomovnyi.runlooptest.network.NewsService;
 
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.Executor;
@@ -26,6 +26,8 @@ import static com.vnedomovnyi.runlooptest.di.module.ExecutorModule.WORKER;
 public class ModelModule {
 
     public static final String LIFESTYLE = "LIFESTYLE";
+    public static final String WSJD = "WSJD";
+    public static final String WORLD = "WORLD";
 
     @Provides
     CurrentTimeModel provideCurrentTimeModel(@Named(MAIN) Executor mainExecutor) {
@@ -40,9 +42,25 @@ public class ModelModule {
     }
 
     @Provides
+    @Singleton
+    @Named(WSJD)
+    NewsModel provideWsjdNewsModel(NewsService newsService, @Named(MAIN) Executor executor) {
+        return new NewsModel(newsService.getWsjdNews(), executor);
+    }
+
+    @Provides
+    @Singleton
+    @Named(WORLD)
+    NewsModel provideWorldNewsModel(NewsService newsService, @Named(MAIN) Executor executor) {
+        return new NewsModel(newsService.getWorldNews(), executor);
+    }
+
+    @Provides
     @ElementsIntoSet
-    Set<UpdatableModel> provideNewsModelsAsUpdatableModels(@Named(LIFESTYLE) NewsModel lifestyleNewsModel) {
-        return new HashSet<>(Collections.singletonList(lifestyleNewsModel));
+    Set<UpdatableModel> provideNewsModelsAsUpdatableModels(@Named(LIFESTYLE) NewsModel lifestyleNewsModel,
+                                                           @Named(WSJD) NewsModel wsjdNewsModel,
+                                                           @Named(WORLD) NewsModel worldNewsModel) {
+        return new HashSet<>(Arrays.asList(lifestyleNewsModel, wsjdNewsModel, worldNewsModel));
     }
 
     @Provides
