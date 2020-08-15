@@ -9,7 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import timber.log.Timber;
 
 @Module
-public class NetworkModule {
+public class OkHttpModule {
 
     @Provides
     @Singleton
