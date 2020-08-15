@@ -14,7 +14,7 @@ import timber.log.Timber;
 @InjectViewState
 public class LifestyleNewsPresenter extends MvpPresenter<LifestyleNewsView> {
 
-    private DataModel<LoadedData<List<Article>>> dataModel;
+    private final DataModel<LoadedData<List<Article>>> dataModel;
 
     public LifestyleNewsPresenter(DataModel<LoadedData<List<Article>>> dataModel) {
         this.dataModel = dataModel;
