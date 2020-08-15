@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.vnedomovnyi.runlooptest.di.DaggerAppComponent;
+import com.vnedomovnyi.runlooptest.model.UpdateDataModel;
 
 import javax.inject.Inject;
 
@@ -17,6 +18,9 @@ public class RunloopTestApp extends Application implements HasAndroidInjector {
     @Inject
     DispatchingAndroidInjector<Object> injector;
 
+    @Inject
+    UpdateDataModel updateDataModel;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -27,6 +31,8 @@ public class RunloopTestApp extends Application implements HasAndroidInjector {
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
+
+        updateDataModel.startUpdating();
     }
 
     private void initDagger() {

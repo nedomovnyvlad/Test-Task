@@ -1,43 +1,43 @@
 package com.vnedomovnyi.runlooptest.ui.screen.news.lifestyle_news;
 
-import androidx.annotation.NonNull;
-
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
-import com.vnedomovnyi.runlooptest.network.NewsResponse;
-import com.vnedomovnyi.runlooptest.network.NewsService;
+import com.vnedomovnyi.runlooptest.entity.Article;
+import com.vnedomovnyi.runlooptest.model.LifestyleNewsModel;
+import com.vnedomovnyi.runlooptest.model.LifestyleNewsModel.LoadedData;
+import com.vnedomovnyi.runlooptest.util.observer.Observer;
 
-import java.util.Objects;
+import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import timber.log.Timber;
 
 @InjectViewState
 public class LifestyleNewsPresenter extends MvpPresenter<LifestyleNewsView> {
 
-    private NewsService newsService;
+    private LifestyleNewsModel lifestyleNewsModel;
 
-    public LifestyleNewsPresenter(NewsService newsService) {
-        this.newsService = newsService;
+    public LifestyleNewsPresenter(LifestyleNewsModel lifestyleNewsModel) {
+        this.lifestyleNewsModel = lifestyleNewsModel;
     }
 
     @Override
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
-
-        newsService.getLifestyleNews().enqueue(new Callback<NewsResponse>() {
-            @Override
-            public void onResponse(@NonNull Call<NewsResponse> call, @NonNull Response<NewsResponse> response) {
-                Timber.d(Objects.requireNonNull(response.body()).toString());
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<NewsResponse> call, @NonNull Throwable t) {
-                Timber.e(t, "Failed to get news.");
-            }
-        });
+        lifestyleNewsModel.getDataObservable().addObserver(observer);
     }
+
+    @Override
+    public void onDestroy() {
+        lifestyleNewsModel.getDataObservable().removeObserver(observer);
+        super.onDestroy();
+    }
+
+    private final Observer<LoadedData<List<Article>>> observer = data -> {
+        if (data.hasData()) {
+            Timber.d("Data loaded. data = %s", data.getData());
+        } else {
+            Timber.e(data.getError(), "Failed to get lifestyle news.");
+        }
+    };
 
 }

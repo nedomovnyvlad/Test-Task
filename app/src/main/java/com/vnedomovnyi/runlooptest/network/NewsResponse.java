@@ -14,6 +14,6 @@ public class NewsResponse {
 
     @ElementList(name = "item", inline = true)
     @Path("channel")
-    List<ArticleResponse> articleList;
+    List<ArticleResponse> articleResponses;
 
 }

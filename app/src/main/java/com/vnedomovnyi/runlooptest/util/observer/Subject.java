@@ -7,6 +7,9 @@ public class Subject<T> extends Observable<T> implements Observer<T> {
     @Nullable
     private T currentValue;
 
+    public Subject() {
+    }
+
     public Subject(@Nullable T currentValue) {
         this.currentValue = currentValue;
     }
