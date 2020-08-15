@@ -11,6 +11,6 @@ import dagger.android.support.AndroidSupportInjectionModule;
 public interface ApplicationModule {
 
     @ContributesAndroidInjector(modules = MainActivityModule.class)
-    MainActivity splashActivityInjector();
+    MainActivity mainActivity();
 
 }
