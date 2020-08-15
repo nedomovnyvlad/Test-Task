@@ -43,6 +43,7 @@ dependencies {
     implementation libraries.daggerAndroidSupport
 
     implementation libraries.okHttp
+    implementation libraries.okHttpLoggingInterceptor
 
     implementation libraries.retrofit
     implementation libraries.retrofitConverter
