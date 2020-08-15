@@ -6,7 +6,6 @@ import androidx.annotation.WorkerThread;
 import com.vnedomovnyi.runlooptest.entity.Article;
 import com.vnedomovnyi.runlooptest.network.ArticleResponse;
 import com.vnedomovnyi.runlooptest.network.NewsResponse;
-import com.vnedomovnyi.runlooptest.network.NewsService;
 import com.vnedomovnyi.runlooptest.util.observer.Observable;
 import com.vnedomovnyi.runlooptest.util.observer.Subject;
 
@@ -16,17 +15,18 @@ import java.util.Objects;
 import java.util.concurrent.Executor;
 
 import lombok.Value;
+import retrofit2.Call;
 
-public class LifestyleNewsModel implements UpdatableModel {
+public class NewsModel implements UpdatableModel {
 
-    private final NewsService newsService;
+    private final Call<NewsResponse> networkCall;
 
     private final Executor mainExecutor;
 
     private final Subject<LoadedData<List<Article>>> subject = new Subject<>();
 
-    public LifestyleNewsModel(NewsService newsService, Executor mainExecutor) {
-        this.newsService = newsService;
+    public NewsModel(Call<NewsResponse> networkCall, Executor mainExecutor) {
+        this.networkCall = networkCall;
         this.mainExecutor = mainExecutor;
     }
 
@@ -36,7 +36,7 @@ public class LifestyleNewsModel implements UpdatableModel {
         NewsResponse response;
 
         try {
-            response = newsService.getLifestyleNews().execute().body();
+            response = networkCall.clone().execute().body();
             Objects.requireNonNull(response);
         } catch (Throwable e) {
             mainExecutor.execute(() -> subject.onUpdate(new LoadedData<>(null, e)));
