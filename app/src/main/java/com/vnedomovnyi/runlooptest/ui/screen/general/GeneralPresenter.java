@@ -2,7 +2,7 @@ package com.vnedomovnyi.runlooptest.ui.screen.general;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
-import com.vnedomovnyi.runlooptest.model.CurrentTimeModel;
+import com.vnedomovnyi.runlooptest.model.DataModel;
 import com.vnedomovnyi.runlooptest.util.observer.Observer;
 
 import org.threeten.bp.LocalDateTime;
@@ -10,24 +10,24 @@ import org.threeten.bp.LocalDateTime;
 @InjectViewState
 public class GeneralPresenter extends MvpPresenter<GeneralView> {
 
-    private final CurrentTimeModel currentTimeModel;
+    private final DataModel<LocalDateTime> dataModel;
 
     private final Observer<LocalDateTime> currentTimeObserver = (time) ->
             getViewState().setTimeText(time.toString());
 
-    public GeneralPresenter(CurrentTimeModel currentTimeModel) {
-        this.currentTimeModel = currentTimeModel;
+    public GeneralPresenter(DataModel<LocalDateTime> dataModel) {
+        this.dataModel = dataModel;
     }
 
     @Override
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
-        currentTimeModel.getCurrentTimeObservable().addObserver(currentTimeObserver);
+        dataModel.getDataObservable().addObserver(currentTimeObserver);
     }
 
     @Override
     public void onDestroy() {
-        currentTimeModel.getCurrentTimeObservable().removeObserver(currentTimeObserver);
+        dataModel.getDataObservable().removeObserver(currentTimeObserver);
         super.onDestroy();
     }
 

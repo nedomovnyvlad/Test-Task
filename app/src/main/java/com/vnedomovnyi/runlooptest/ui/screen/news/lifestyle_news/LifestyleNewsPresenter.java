@@ -3,7 +3,7 @@ package com.vnedomovnyi.runlooptest.ui.screen.news.lifestyle_news;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.vnedomovnyi.runlooptest.entity.Article;
-import com.vnedomovnyi.runlooptest.model.NewsModel;
+import com.vnedomovnyi.runlooptest.model.DataModel;
 import com.vnedomovnyi.runlooptest.model.NewsModel.LoadedData;
 import com.vnedomovnyi.runlooptest.util.observer.Observer;
 
@@ -14,21 +14,21 @@ import timber.log.Timber;
 @InjectViewState
 public class LifestyleNewsPresenter extends MvpPresenter<LifestyleNewsView> {
 
-    private NewsModel newsModel;
+    private DataModel<LoadedData<List<Article>>> dataModel;
 
-    public LifestyleNewsPresenter(NewsModel newsModel) {
-        this.newsModel = newsModel;
+    public LifestyleNewsPresenter(DataModel<LoadedData<List<Article>>> dataModel) {
+        this.dataModel = dataModel;
     }
 
     @Override
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
-        newsModel.getDataObservable().addObserver(observer);
+        dataModel.getDataObservable().addObserver(observer);
     }
 
     @Override
     public void onDestroy() {
-        newsModel.getDataObservable().removeObserver(observer);
+        dataModel.getDataObservable().removeObserver(observer);
         super.onDestroy();
     }
 

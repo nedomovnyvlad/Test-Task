@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.threeten.bp.temporal.ChronoUnit.SECONDS;
 
-public class CurrentTimeModel {
+public class CurrentTimeModel implements DataModel<LocalDateTime> {
 
     private static final int SECONDS_INTERVAL = 1;
 
@@ -54,7 +54,8 @@ public class CurrentTimeModel {
         return LocalDateTime.now().truncatedTo(SECONDS);
     }
 
-    public Observable<LocalDateTime> getCurrentTimeObservable() {
+    @Override
+    public Observable<LocalDateTime> getDataObservable() {
         return currentDateTimeSubject;
     }
 
