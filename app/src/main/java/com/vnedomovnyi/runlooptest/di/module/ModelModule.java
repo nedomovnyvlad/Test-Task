@@ -1,5 +1,6 @@
 package com.vnedomovnyi.runlooptest.di.module;
 
+import com.vnedomovnyi.runlooptest.model.ChosenArticleModel;
 import com.vnedomovnyi.runlooptest.model.CurrentTimeModel;
 import com.vnedomovnyi.runlooptest.model.NewsModel;
 import com.vnedomovnyi.runlooptest.model.UpdatableModel;
@@ -32,6 +33,12 @@ public class ModelModule {
     @Provides
     CurrentTimeModel provideCurrentTimeModel(@Named(MAIN) Executor mainExecutor) {
         return new CurrentTimeModel(mainExecutor);
+    }
+
+    @Provides
+    @Singleton
+    ChosenArticleModel provideChosenArticleModel() {
+        return new ChosenArticleModel();
     }
 
     @Provides

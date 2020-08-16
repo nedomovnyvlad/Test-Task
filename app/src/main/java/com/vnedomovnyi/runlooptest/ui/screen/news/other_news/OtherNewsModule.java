@@ -1,5 +1,6 @@
 package com.vnedomovnyi.runlooptest.ui.screen.news.other_news;
 
+import com.vnedomovnyi.runlooptest.model.ChosenArticleModel;
 import com.vnedomovnyi.runlooptest.model.NewsModel;
 
 import javax.inject.Named;
@@ -14,9 +15,10 @@ import static com.vnedomovnyi.runlooptest.di.module.ModelModule.WSJD;
 public class OtherNewsModule {
 
     @Provides
-    OtherNewsPresenter provideOtherNewsPresenter(@Named(WSJD) NewsModel wsjdNewsModel,
+    OtherNewsPresenter provideOtherNewsPresenter(ChosenArticleModel chosenArticleModel,
+                                                 @Named(WSJD) NewsModel wsjdNewsModel,
                                                  @Named(WORLD) NewsModel worldNewsModel) {
-        return new OtherNewsPresenter(wsjdNewsModel, worldNewsModel);
+        return new OtherNewsPresenter(chosenArticleModel, wsjdNewsModel, worldNewsModel);
     }
 
 }

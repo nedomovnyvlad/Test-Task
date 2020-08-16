@@ -2,6 +2,7 @@ package com.vnedomovnyi.runlooptest.ui.screen.news.other_news;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.vnedomovnyi.runlooptest.entity.Article;
+import com.vnedomovnyi.runlooptest.model.ChosenArticleModel;
 import com.vnedomovnyi.runlooptest.model.DataModel;
 import com.vnedomovnyi.runlooptest.model.NewsModel.LoadedData;
 import com.vnedomovnyi.runlooptest.ui.screen.news.NewsTabPresenter;
@@ -25,8 +26,10 @@ public class OtherNewsPresenter extends NewsTabPresenter {
 
     private final List<Article> worldArticles = new ArrayList<>();
 
-    public OtherNewsPresenter(DataModel<LoadedData<List<Article>>> wsjdNewsModel,
+    public OtherNewsPresenter(ChosenArticleModel chosenArticleModel,
+                              DataModel<LoadedData<List<Article>>> wsjdNewsModel,
                               DataModel<LoadedData<List<Article>>> worldNewsModel) {
+        super(chosenArticleModel);
         this.wsjdNewsModel = wsjdNewsModel;
         this.worldNewsModel = worldNewsModel;
     }

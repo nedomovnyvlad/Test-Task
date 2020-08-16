@@ -9,4 +9,7 @@ public interface GeneralView extends MvpView {
     @StateStrategyType(AddToEndSingleStrategy.class)
     void setTimeText(String text);
 
+    @StateStrategyType(AddToEndSingleStrategy.class)
+    void setArticleText(String text);
+
 }

@@ -20,6 +20,9 @@ public class GeneralFragment extends BaseFragment implements GeneralView {
     @BindView(R.id.text_time)
     TextView timeTextView;
 
+    @BindView(R.id.text_article)
+    TextView articleTextView;
+
     public static GeneralFragment newInstance() {
         return new GeneralFragment();
     }
@@ -37,6 +40,11 @@ public class GeneralFragment extends BaseFragment implements GeneralView {
     @Override
     public void setTimeText(String text) {
         timeTextView.setText(text);
+    }
+
+    @Override
+    public void setArticleText(String text) {
+        articleTextView.setText(text);
     }
 
 }
