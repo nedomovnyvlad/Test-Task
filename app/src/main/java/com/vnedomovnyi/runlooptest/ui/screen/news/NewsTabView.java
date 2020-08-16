@@ -2,6 +2,7 @@ package com.vnedomovnyi.runlooptest.ui.screen.news;
 
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
+import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 import com.vnedomovnyi.runlooptest.entity.Article;
 
@@ -11,5 +12,8 @@ public interface NewsTabView extends MvpView {
 
     @StateStrategyType(AddToEndSingleStrategy.class)
     void setData(List<Article> articles);
+
+    @StateStrategyType(OneExecutionStateStrategy.class)
+    void openDescriptionScreen(String description);
 
 }

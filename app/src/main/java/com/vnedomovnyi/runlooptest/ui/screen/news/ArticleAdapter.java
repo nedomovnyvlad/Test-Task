@@ -3,6 +3,7 @@ package com.vnedomovnyi.runlooptest.ui.screen.news;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DiffUtil;
 
 import com.vnedomovnyi.runlooptest.entity.Article;
@@ -10,7 +11,13 @@ import com.vnedomovnyi.runlooptest.util.recycler_view.BaseAdapter;
 
 import java.util.List;
 
+import lombok.Setter;
+
 public class ArticleAdapter extends BaseAdapter<Article, ArticleViewHolder> {
+
+    @Nullable
+    @Setter
+    private ArticleViewHolder.OnArticleClickListener onArticleClickListener;
 
     @Override
     protected DiffUtil.Callback getDiffCallback(List<Article> oldList, List<Article> newList) {
@@ -25,7 +32,7 @@ public class ArticleAdapter extends BaseAdapter<Article, ArticleViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ArticleViewHolder holder, int position) {
-        holder.bind(getItem(position));
+        holder.bind(getItem(position), onArticleClickListener);
     }
 
 }

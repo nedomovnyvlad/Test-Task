@@ -11,11 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.vnedomovnyi.runlooptest.R;
 import com.vnedomovnyi.runlooptest.entity.Article;
+import com.vnedomovnyi.runlooptest.ui.activity.main.MainActivity;
 import com.vnedomovnyi.runlooptest.ui.fragment.BaseFragment;
+import com.vnedomovnyi.runlooptest.ui.screen.news.description.DescriptionFragment;
 
 import java.util.List;
 
 import butterknife.BindView;
+
+import static com.vnedomovnyi.runlooptest.ui.activity.main.MainActivity.FULLSCREEN_FRAGMENT_CONTAINER_ID;
 
 public abstract class NewsTabFragment<Presenter extends NewsTabPresenter>
         extends BaseFragment implements NewsTabView {
@@ -33,6 +37,12 @@ public abstract class NewsTabFragment<Presenter extends NewsTabPresenter>
     protected abstract Presenter getPresenter();
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        adapter.setOnArticleClickListener(onArticleClickListener);
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -46,5 +56,18 @@ public abstract class NewsTabFragment<Presenter extends NewsTabPresenter>
     public void setData(List<Article> articles) {
         adapter.setData(articles);
     }
+
+    @Override
+    public void openDescriptionScreen(String description) {
+        ((MainActivity) requireActivity())
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .replace(FULLSCREEN_FRAGMENT_CONTAINER_ID, DescriptionFragment.newInstance(description))
+                .addToBackStack(null)
+                .commit();
+    }
+
+    private final ArticleViewHolder.OnArticleClickListener onArticleClickListener =
+            (article) -> getPresenter().handleArticleClick(article);
 
 }

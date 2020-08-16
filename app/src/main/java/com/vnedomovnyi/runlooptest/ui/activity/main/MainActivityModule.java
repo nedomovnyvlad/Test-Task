@@ -3,6 +3,7 @@ package com.vnedomovnyi.runlooptest.ui.activity.main;
 import com.vnedomovnyi.runlooptest.ui.screen.general.GeneralFragment;
 import com.vnedomovnyi.runlooptest.ui.screen.general.GeneralModule;
 import com.vnedomovnyi.runlooptest.ui.screen.news.NewsFragment;
+import com.vnedomovnyi.runlooptest.ui.screen.news.description.DescriptionFragment;
 import com.vnedomovnyi.runlooptest.ui.screen.news.lifestyle_news.LifestyleNewsFragment;
 import com.vnedomovnyi.runlooptest.ui.screen.news.lifestyle_news.LifestyleNewsModule;
 import com.vnedomovnyi.runlooptest.ui.screen.news.other_news.OtherNewsFragment;
@@ -25,5 +26,8 @@ public interface MainActivityModule {
 
     @ContributesAndroidInjector(modules = OtherNewsModule.class)
     OtherNewsFragment otherNewsFragment();
+
+    @ContributesAndroidInjector
+    DescriptionFragment descriptionFragment();
 
 }

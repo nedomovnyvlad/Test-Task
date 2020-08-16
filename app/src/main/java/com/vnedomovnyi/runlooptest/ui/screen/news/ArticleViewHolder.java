@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.vnedomovnyi.runlooptest.R;
@@ -31,8 +32,18 @@ public class ArticleViewHolder extends RecyclerView.ViewHolder {
         return new ArticleViewHolder(view);
     }
 
-    public void bind(Article article) {
+    public void bind(Article article, @Nullable OnArticleClickListener listener) {
         titleTextView.setText(article.getTitle());
+
+        if (listener != null) {
+            itemView.setOnClickListener(ignored -> listener.onClick(article));
+        }
+    }
+
+    public interface OnArticleClickListener {
+
+        void onClick(Article article);
+
     }
 
 }

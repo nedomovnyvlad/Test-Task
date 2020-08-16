@@ -11,4 +11,8 @@ public abstract class NewsTabPresenter extends MvpPresenter<NewsTabView> {
         getViewState().setData(articles);
     }
 
+    void handleArticleClick(Article article) {
+        getViewState().openDescriptionScreen(article.getDescription());
+    }
+
 }

@@ -24,6 +24,8 @@ import dagger.android.HasAndroidInjector;
 
 public class MainActivity extends AppCompatActivity implements HasAndroidInjector {
 
+    public static final int FULLSCREEN_FRAGMENT_CONTAINER_ID = R.id.fullscreen_fragment_container;
+
     @Inject
     DispatchingAndroidInjector<Object> injector;
 
