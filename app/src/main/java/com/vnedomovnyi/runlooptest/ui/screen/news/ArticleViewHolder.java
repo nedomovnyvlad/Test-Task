@@ -1,0 +1,38 @@
+package com.vnedomovnyi.runlooptest.ui.screen.news;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.vnedomovnyi.runlooptest.R;
+import com.vnedomovnyi.runlooptest.entity.Article;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class ArticleViewHolder extends RecyclerView.ViewHolder {
+
+    @BindView(R.id.text_title)
+    TextView titleTextView;
+
+    public ArticleViewHolder(@NonNull View itemView) {
+        super(itemView);
+        ButterKnife.bind(this, itemView);
+    }
+
+    public static ArticleViewHolder create(ViewGroup parent) {
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        View view = layoutInflater.inflate(R.layout.item_article, parent, false);
+
+        return new ArticleViewHolder(view);
+    }
+
+    public void bind(Article article) {
+        titleTextView.setText(article.getTitle());
+    }
+
+}

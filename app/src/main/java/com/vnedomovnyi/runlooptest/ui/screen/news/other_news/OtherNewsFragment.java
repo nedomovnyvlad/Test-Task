@@ -2,12 +2,11 @@ package com.vnedomovnyi.runlooptest.ui.screen.news.other_news;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
-import com.vnedomovnyi.runlooptest.R;
-import com.vnedomovnyi.runlooptest.ui.fragment.BaseFragment;
+import com.vnedomovnyi.runlooptest.ui.screen.news.NewsTabFragment;
 
 import javax.inject.Inject;
 
-public class OtherNewsFragment extends BaseFragment implements OtherNewsView {
+public class OtherNewsFragment extends NewsTabFragment<OtherNewsPresenter> {
 
     @Inject
     @InjectPresenter
@@ -17,14 +16,10 @@ public class OtherNewsFragment extends BaseFragment implements OtherNewsView {
         return new OtherNewsFragment();
     }
 
-    @ProvidePresenter
-    OtherNewsPresenter providePresenter() {
-        return presenter;
-    }
-
     @Override
-    protected int getLayoutResId() {
-        return R.layout.fragment_other_news;
+    @ProvidePresenter
+    protected OtherNewsPresenter getPresenter() {
+        return presenter;
     }
 
 }
