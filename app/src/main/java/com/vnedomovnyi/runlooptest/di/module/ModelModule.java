@@ -31,6 +31,7 @@ public class ModelModule {
     public static final String WORLD = "WORLD";
 
     @Provides
+    @Singleton
     CurrentTimeModel provideCurrentTimeModel(@Named(MAIN) Executor mainExecutor) {
         return new CurrentTimeModel(mainExecutor);
     }
