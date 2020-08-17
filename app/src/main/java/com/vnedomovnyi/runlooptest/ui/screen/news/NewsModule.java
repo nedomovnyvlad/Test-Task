@@ -10,7 +10,7 @@ public class NewsModule {
 
     @Provides
     NewsPresenter provideNewsPresenter(UpdateDataModel updateDataModel) {
-        return new NewsPresenter(updateDataModel);
+        return new NewsPresenter(updateDataModel.getLoadingStatusObservable());
     }
 
 }

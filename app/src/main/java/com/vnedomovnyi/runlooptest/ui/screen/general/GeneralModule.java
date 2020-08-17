@@ -12,7 +12,10 @@ public class GeneralModule {
     @Provides
     GeneralPresenter provideGeneralPresenter(CurrentTimeModel currentTimeModel,
                                              ChosenArticleModel chosenArticleModel) {
-        return new GeneralPresenter(currentTimeModel, chosenArticleModel);
+        return new GeneralPresenter(
+                currentTimeModel.getCurrentTimeObservable(),
+                chosenArticleModel.getChosenArticleObservable()
+        );
     }
 
 }

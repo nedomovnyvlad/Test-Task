@@ -4,7 +4,7 @@ import com.vnedomovnyi.runlooptest.entity.Article;
 import com.vnedomovnyi.runlooptest.util.observer.Observable;
 import com.vnedomovnyi.runlooptest.util.observer.Subject;
 
-public class ChosenArticleModel implements DataModel<Article> {
+public class ChosenArticleModel {
 
     private final Subject<Article> subject = new Subject<>();
 
@@ -12,8 +12,7 @@ public class ChosenArticleModel implements DataModel<Article> {
         subject.onUpdate(article);
     }
 
-    @Override
-    public Observable<Article> getDataObservable() {
+    public Observable<Article> getChosenArticleObservable() {
         return subject;
     }
 

@@ -18,7 +18,11 @@ public class OtherNewsModule {
     OtherNewsPresenter provideOtherNewsPresenter(ChosenArticleModel chosenArticleModel,
                                                  @Named(WSJD) NewsModel wsjdNewsModel,
                                                  @Named(WORLD) NewsModel worldNewsModel) {
-        return new OtherNewsPresenter(chosenArticleModel, wsjdNewsModel, worldNewsModel);
+        return new OtherNewsPresenter(
+                chosenArticleModel,
+                wsjdNewsModel.getDataObservable(),
+                worldNewsModel.getDataObservable()
+        );
     }
 
 }

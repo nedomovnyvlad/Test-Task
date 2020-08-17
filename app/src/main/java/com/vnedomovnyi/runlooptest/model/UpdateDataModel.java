@@ -15,7 +15,7 @@ import timber.log.Timber;
 
 import static com.vnedomovnyi.runlooptest.Constants.UPDATE_INTERVAL_SECONDS;
 
-public class UpdateDataModel implements DataModel<Boolean> {
+public class UpdateDataModel {
 
     private final Set<UpdatableModel> models;
 
@@ -69,8 +69,7 @@ public class UpdateDataModel implements DataModel<Boolean> {
         scheduleTask();
     }
 
-    @Override
-    public Observable<Boolean> getDataObservable() {
+    public Observable<Boolean> getLoadingStatusObservable() {
         return loadingStatusSubject;
     }
 

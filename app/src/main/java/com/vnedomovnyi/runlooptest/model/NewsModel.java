@@ -17,7 +17,7 @@ import java.util.concurrent.Executor;
 import lombok.Value;
 import retrofit2.Call;
 
-public class NewsModel implements UpdatableModel, DataModel<NewsModel.LoadedData<List<Article>>> {
+public class NewsModel implements UpdatableModel {
 
     private final Call<NewsResponse> networkCall;
 
@@ -52,7 +52,6 @@ public class NewsModel implements UpdatableModel, DataModel<NewsModel.LoadedData
         mainExecutor.execute(() -> subject.onUpdate(new LoadedData<>(articles, null)));
     }
 
-    @Override
     public Observable<LoadedData<List<Article>>> getDataObservable() {
         return subject;
     }

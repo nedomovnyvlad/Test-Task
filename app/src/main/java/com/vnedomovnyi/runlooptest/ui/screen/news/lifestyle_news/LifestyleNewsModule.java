@@ -16,7 +16,7 @@ public class LifestyleNewsModule {
     @Provides
     LifestyleNewsPresenter provideLifestyleNewsPresenter(ChosenArticleModel chosenArticleModel,
                                                          @Named(LIFESTYLE) NewsModel newsModel) {
-        return new LifestyleNewsPresenter(chosenArticleModel, newsModel);
+        return new LifestyleNewsPresenter(chosenArticleModel, newsModel.getDataObservable());
     }
 
 }
