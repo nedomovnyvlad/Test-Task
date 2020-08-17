@@ -1,7 +1,11 @@
 package com.vnedomovnyi.runlooptest.model;
 
+import com.vnedomovnyi.runlooptest.util.observer.Observable;
+import com.vnedomovnyi.runlooptest.util.observer.Subject;
+
 import java.util.Set;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -11,7 +15,7 @@ import timber.log.Timber;
 
 import static com.vnedomovnyi.runlooptest.Constants.UPDATE_INTERVAL_SECONDS;
 
-public class UpdateDataModel {
+public class UpdateDataModel implements DataModel<Boolean> {
 
     private final Set<UpdatableModel> models;
 
@@ -19,9 +23,16 @@ public class UpdateDataModel {
 
     private final ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
 
-    public UpdateDataModel(Set<UpdatableModel> models, ExecutorService workerExecutorService) {
+    private final Executor mainExecutor;
+
+    private final Subject<Boolean> loadingStatusSubject = new Subject<>(false);
+
+    public UpdateDataModel(Set<UpdatableModel> models,
+                           ExecutorService workerExecutorService,
+                           Executor mainExecutor) {
         this.models = models;
         this.workerExecutorService = workerExecutorService;
+        this.mainExecutor = mainExecutor;
     }
 
     public void startUpdating() {
@@ -37,6 +48,8 @@ public class UpdateDataModel {
     }
 
     private void runAndReschedule() {
+        mainExecutor.execute(() -> loadingStatusSubject.onUpdate(true));
+
         CountDownLatch countDownLatch = new CountDownLatch(models.size());
 
         for (UpdatableModel updatableModel : models) {
@@ -52,7 +65,13 @@ public class UpdateDataModel {
             Timber.e(e, "Failed to await.");
         }
 
+        mainExecutor.execute(() -> loadingStatusSubject.onUpdate(false));
         scheduleTask();
+    }
+
+    @Override
+    public Observable<Boolean> getDataObservable() {
+        return loadingStatusSubject;
     }
 
 }

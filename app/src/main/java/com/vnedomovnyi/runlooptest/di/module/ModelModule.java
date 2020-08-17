@@ -74,8 +74,9 @@ public class ModelModule {
     @Provides
     @Singleton
     UpdateDataModel provideUpdateDataModel(Set<UpdatableModel> updatableModels,
-                                           @Named(WORKER) ExecutorService workerExecutorService) {
-        return new UpdateDataModel(updatableModels, workerExecutorService);
+                                           @Named(WORKER) ExecutorService workerExecutorService,
+                                           @Named(MAIN) Executor mainExecutor) {
+        return new UpdateDataModel(updatableModels, workerExecutorService, mainExecutor);
     }
 
 }
