@@ -1,4 +1,4 @@
-package com.vnedomovnyi.runlooptest.ui.screen.news.description;
+package com.vnedomovnyi.runlooptest.ui.screen.description;
 
 import android.os.Bundle;
 import android.view.View;

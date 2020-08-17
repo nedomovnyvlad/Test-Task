@@ -13,7 +13,7 @@ import com.vnedomovnyi.runlooptest.R;
 import com.vnedomovnyi.runlooptest.entity.Article;
 import com.vnedomovnyi.runlooptest.ui.activity.main.MainActivity;
 import com.vnedomovnyi.runlooptest.ui.fragment.BaseFragment;
-import com.vnedomovnyi.runlooptest.ui.screen.news.description.DescriptionFragment;
+import com.vnedomovnyi.runlooptest.ui.screen.description.DescriptionFragment;
 
 import java.util.List;
 
