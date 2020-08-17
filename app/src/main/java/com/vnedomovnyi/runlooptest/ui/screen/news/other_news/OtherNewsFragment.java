@@ -2,7 +2,7 @@ package com.vnedomovnyi.runlooptest.ui.screen.news.other_news;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
-import com.vnedomovnyi.runlooptest.ui.screen.news.NewsTabFragment;
+import com.vnedomovnyi.runlooptest.ui.screen.news.news_tab.NewsTabFragment;
 
 import javax.inject.Inject;
 

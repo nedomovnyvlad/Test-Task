@@ -1,4 +1,4 @@
-package com.vnedomovnyi.runlooptest.ui.screen.news;
+package com.vnedomovnyi.runlooptest.ui.screen.news.news_tab;
 
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +14,8 @@ import com.vnedomovnyi.runlooptest.entity.Article;
 import com.vnedomovnyi.runlooptest.ui.activity.main.MainActivity;
 import com.vnedomovnyi.runlooptest.ui.fragment.BaseFragment;
 import com.vnedomovnyi.runlooptest.ui.screen.description.DescriptionFragment;
+import com.vnedomovnyi.runlooptest.ui.screen.news.ArticleAdapter;
+import com.vnedomovnyi.runlooptest.ui.screen.news.ArticleViewHolder;
 
 import java.util.List;
 

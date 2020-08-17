@@ -5,7 +5,7 @@ import com.vnedomovnyi.runlooptest.entity.Article;
 import com.vnedomovnyi.runlooptest.model.ChosenArticleModel;
 import com.vnedomovnyi.runlooptest.model.DataModel;
 import com.vnedomovnyi.runlooptest.model.NewsModel.LoadedData;
-import com.vnedomovnyi.runlooptest.ui.screen.news.NewsTabPresenter;
+import com.vnedomovnyi.runlooptest.ui.screen.news.news_tab.NewsTabPresenter;
 import com.vnedomovnyi.runlooptest.util.observer.Observer;
 
 import java.util.ArrayList;

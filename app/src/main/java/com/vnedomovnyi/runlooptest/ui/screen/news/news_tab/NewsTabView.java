@@ -1,4 +1,4 @@
-package com.vnedomovnyi.runlooptest.ui.screen.news;
+package com.vnedomovnyi.runlooptest.ui.screen.news.news_tab;
 
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
