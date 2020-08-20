@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "Runloop Test"
+rootProject.name = "Test Task"
