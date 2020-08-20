@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.vnedomovnyi.testtask.R;
 import com.vnedomovnyi.testtask.entity.Article;
-import com.vnedomovnyi.testtask.ui.activity.main.MainActivity;
 import com.vnedomovnyi.testtask.ui.fragment.BaseFragment;
 import com.vnedomovnyi.testtask.ui.screen.description.DescriptionFragment;
 import com.vnedomovnyi.testtask.ui.screen.news.ArticleAdapter;
@@ -61,7 +60,7 @@ public abstract class NewsTabFragment<Presenter extends NewsTabPresenter>
 
     @Override
     public void openDescriptionScreen(String description) {
-        ((MainActivity) requireActivity())
+        requireActivity()
                 .getSupportFragmentManager()
                 .beginTransaction()
                 .replace(FULLSCREEN_FRAGMENT_CONTAINER_ID, DescriptionFragment.newInstance(description))
